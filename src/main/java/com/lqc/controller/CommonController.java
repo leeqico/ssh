@@ -49,7 +49,9 @@ public class CommonController {
 	@RequestMapping(value = "/main", method = RequestMethod.GET)
 	public String main(ModelMap modelMap) {
 		User user = userService.getCurrent();
-		modelMap.put("userName", user.getName());
+		if (user != null) {
+			modelMap.put("userName", user.getName());
+		}
 		return "/common/main";
 	}
 	
