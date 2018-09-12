@@ -14,7 +14,7 @@
 	    	<div style="position:absolute;top:15px;left:50px;font-size:20px;">
 	    		${userName}
 	    	</div>
-	    	<div style="position:absolute;top:15px;left:800px;font-size:20px;">
+	    	<div style="text-align:center;line-height: 60px;font-size:20px;">
 	    		SSH后台管理系统
 	    	</div>
 	    	<div style="position:absolute;top:15px;right:50px;font-size:20px;">
@@ -23,7 +23,7 @@
 	    </div>
 	    [#-- 下 --]
 	    <div data-options="region:'south',split:false" style="height:30px;">
-	    	<div style="position:absolute;top:5px;left:800px;font-size:10px;">
+	    	<div style="text-align:center;line-height: 30px;font-size:10px;">
 	    		&copy;版权归属李庆超所有
 	    	</div>
 	    </div>
