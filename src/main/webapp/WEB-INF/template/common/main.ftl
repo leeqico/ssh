@@ -1,4 +1,3 @@
-[#assign shiro = JspTaglibs["/WEB-INF/tags/shiro.tld"] /]
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,7 +11,7 @@
 		[#-- 上 --]
 	    <div data-options="region:'north',split:false,collapsible:false" style="height:60px;background:#99CCCC;overflow:hidden;border:none;">
 	    	<div style="position:absolute;top:15px;left:50px;font-size:20px;">
-	    		${userName}
+	    		${userName} <@shiro.principal/> <@shiro.hasRole name="18826230693">角色</@shiro.hasRole> <@shiro.hasPermission name="user:add">权限</@shiro.hasPermission>
 	    	</div>
 	    	<div style="text-align:center;line-height: 60px;font-size:20px;">
 	    		SSH后台管理系统

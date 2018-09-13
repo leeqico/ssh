@@ -1,6 +1,8 @@
 package com.lqc.shiro;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import javax.annotation.Resource;
@@ -77,9 +79,15 @@ public class ShiroRealm extends AuthorizingRealm {
 		//1.从PrincipalCollection中来获取登录用户的信息
 		Object principal = principals.getPrimaryPrincipal();
 		//2.利用登录的用户信息来获取当前用户的角色或权限（可能需要查询数据库）
+		SimpleAuthorizationInfo info = new SimpleAuthorizationInfo();
+		//角色
 		Set<String> roles = new HashSet<>();
 		roles.add(String.valueOf(principal));
-		AuthorizationInfo info = new SimpleAuthorizationInfo(roles);
+		info.addRoles(roles);
+		//权限
+		List<String> permissions = new ArrayList<>();
+		permissions.add("user:add");
+		info.addStringPermissions(permissions);
 		return info;
 	}
 
