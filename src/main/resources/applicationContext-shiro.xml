@@ -6,7 +6,7 @@
 	<!-- 1.配置securityManager -->
     <bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
         <property name="authenticator" ref="authenticator"/>
-        <property name="realm" ref="jdbcRealm"></property>
+        <property name="realm" ref="shiroRealm"></property>
     </bean>
     
     <bean id="authenticator" class="org.apache.shiro.authc.pam.ModularRealmAuthenticator">
@@ -16,7 +16,7 @@
     </bean>
 
     <!-- 3.配置Realm，直接配置实现了org.apache.shiro.realm.Realm接口的bean -->
-    <bean id="jdbcRealm" class="com.lqc.shiro.ShiroRealm">
+    <bean id="shiroRealm" class="com.lqc.shiro.ShiroRealm">
     	<property name="credentialsMatcher">
     		<bean class="org.apache.shiro.authc.credential.HashedCredentialsMatcher">
     			<property name="hashAlgorithmName" value="MD5"></property>

@@ -2,26 +2,22 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>SSH后台登录</title>
+<title>用户档案</title>
 <link rel="stylesheet" type="text/css" href="resources/easyui/themes/default/easyui.css" />
 <link rel="stylesheet" type="text/css" href="resources/easyui/themes/icon.css" />
 </head>
 <body>
 
-	<table class="easyui-datagrid">
+	<table class="easyui-datagrid" data-options="fitColumns:true">
 		<thead>
 			<tr>
-				<th data-options="field:'code'">Code</th>
 				<th data-options="field:'name'">Name</th>
-				<th data-options="field:'price'">Price</th>
+				<th data-options="field:'mobile'">Mobile</th>
 			</tr>
 	    </thead>
 	    <tbody>
 			<tr>
-				<td>001</td><td>name1</td><td>2323</td>
-			</tr>
-			<tr>
-				<td>002</td><td>name2</td><td>4612</td>
+				<td>李庆超</td><td>18826230693</td>
 			</tr>
 		</tbody>
 	</table>
