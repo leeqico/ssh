@@ -33,24 +33,22 @@ public class UserDaoImpl implements UserDao{
 	}
 
 	@Override
-	public Boolean login(String mobile, String password) {
-		String hql = "select 1 from User where mobile = :mobile and password = :password"; 
-		Query query = currentSession().createQuery(hql).setParameter("mobile", mobile).setParameter("password", password);
-		return query.setMaxResults(1).uniqueResult() != null;
-	}
-
-	@Override
-	public User findByMobileAndPassword(String mobile, String password) {
-		String hql = "from User where mobile = :mobile and password = :password"; 
-		Query query = currentSession().createQuery(hql).setParameter("mobile", mobile).setParameter("password", password);
-		return (User) query.setMaxResults(1).uniqueResult();
-	}
-
-	@Override
 	public User findByMobile(String mobile) {
 		String hql = "from User where mobile = :mobile";
 		Query query = currentSession().createQuery(hql).setParameter("mobile", mobile);
 		return (User) query.setMaxResults(1).uniqueResult();
+	}
+
+	@Override
+	public Boolean isExistMobile(String mobile) {
+		String hql = "from User where mobile = :mobile";
+		Query query = currentSession().createQuery(hql).setParameter("mobile", mobile);
+		return query.setMaxResults(1).uniqueResult() != null;
+	}
+
+	@Override
+	public void save(User user) {
+		currentSession().save(user);
 	}
 
 }

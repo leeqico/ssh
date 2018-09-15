@@ -91,6 +91,14 @@
 		</dependency>
 		<!-- freemarker + shiro（标签） end -->
 		
+		<!-- commons begin -->
+		<dependency>
+		    <groupId>org.apache.commons</groupId>
+		    <artifactId>commons-lang3</artifactId>
+		    <version>3.8</version>
+		</dependency>
+		<!-- commons end -->
+		
 	</dependencies>
 	
 </project>

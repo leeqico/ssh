@@ -7,6 +7,7 @@ public class FilterChainDefinitionMapBuilder {
 	public LinkedHashMap<String, String> buildFilterChainDefinitionMap(){
 		LinkedHashMap<String, String> map = new LinkedHashMap<>();
 		map.put("/login.jhtml", "anon");
+		map.put("/register.jhtml", "anon");
 		map.put("/logout.jhtml", "logout");
 		
 		map.put("/user/add.jhtml", "perms[\"user:add\"]");

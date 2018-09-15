@@ -2,6 +2,7 @@ package com.lqc.controller;
 
 import javax.annotation.Resource;
 
+import org.apache.commons.lang3.BooleanUtils;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.UsernamePasswordToken;
@@ -27,12 +28,12 @@ public class CommonController {
 	}
 	
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
-	public String login(String username, String password) {
+	public String login(String mobile, String password) {
 		Subject currentUser = SecurityUtils.getSubject();
 		//测试当前用户是否已经被认证，即是否登录
         if (!currentUser.isAuthenticated()) {
         	//把用户名和密码封装为UsernamePasswordToken对象
-            UsernamePasswordToken token = new UsernamePasswordToken(username, password);
+            UsernamePasswordToken token = new UsernamePasswordToken(mobile, password);
             token.setRememberMe(true);
             try {
             	//执行登录
@@ -58,6 +59,24 @@ public class CommonController {
 	@RequestMapping(value = "/unauthorized", method = RequestMethod.GET)
 	public String unauthorized(ModelMap model) {
 		return "/common/unauthorized";
+	}
+	
+	@RequestMapping(value = "/register", method = RequestMethod.GET)
+	public String register(ModelMap model) {
+		return "/common/register";
+	}
+	
+	@RequestMapping(value = "/register", method = RequestMethod.POST)
+	public String register(String name, String mobile, String password) {
+		Boolean isExist = userService.isExistMobile(mobile);
+		if (BooleanUtils.isTrue(isExist)) {
+			System.out.println("该手机号已经注册了");
+			return "/common/register";
+		} else {
+			System.out.println(mobile + ":" + password);
+			userService.register(name, mobile,password);
+		}
+		return "/common/login";
 	}
 
 }

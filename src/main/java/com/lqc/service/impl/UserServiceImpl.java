@@ -1,12 +1,15 @@
 package com.lqc.service.impl;
 
 import java.util.List;
+import java.util.UUID;
 
 import javax.annotation.Resource;
 
 import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.crypto.hash.SimpleHash;
 import org.apache.shiro.subject.PrincipalCollection;
 import org.apache.shiro.subject.Subject;
+import org.apache.shiro.util.ByteSource;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -27,27 +30,17 @@ public class UserServiceImpl implements UserService{
 	}
 
 	@Override
-	@Transactional
-	public Boolean login(String mobile, String password) {
-		if (mobile == null || mobile.trim() == "" || password == null || password.trim() == "") {
-			return false;
-		}
-		Boolean isExistUser = userDao.login(mobile, password);
-		return isExistUser;
-	}
-
-	@Override
-	@Transactional(readOnly = true)
-	public User findByMobileAndPassword(String mobile, String password) {
-		User user = userDao.findByMobileAndPassword(mobile,password);
-		return user;
-	}
-
-	@Override
 	@Transactional(readOnly = true)
 	public User findByMobile(String mobile) {
 		User user = userDao.findByMobile(mobile);
 		return user;
+	}
+	
+	@Override
+	@Transactional(readOnly = true)
+	public Boolean isExistMobile(String mobile) {
+		Boolean isExist = userDao.isExistMobile(mobile);
+		return isExist;
 	}
 
 	@Override
@@ -74,6 +67,23 @@ public class UserServiceImpl implements UserService{
 			}
 		}
 		return null;
+	}
+
+	@Override
+	@Transactional
+	public void register(String name, String mobile, String password) {
+		String algorithmName = "MD5";
+		Object salt = ByteSource.Util.bytes(mobile);
+		int hashIterations = 1024;
+		Object source = new SimpleHash(algorithmName, password, salt, hashIterations);
+		User user = new User();
+		String id = UUID.randomUUID().toString().replace("-", "");
+		user.setId(id);
+		user.setName(name);
+		user.setMobile(mobile);
+		user.setPassword(String.valueOf(source));
+		user.setSalt(String.valueOf(salt));
+		userDao.save(user);
 	}
 
 }
