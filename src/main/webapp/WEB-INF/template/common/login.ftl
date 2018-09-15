@@ -9,7 +9,7 @@
 <body>
 
 	<div align='center'>
-		<form id="loginForm" action="login" method="post">
+		<form id="loginForm" action="login.jhtml" method="post">
 			<table>
 				<tr>
 					<td>Mobile:</td>

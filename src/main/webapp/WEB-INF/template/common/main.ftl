@@ -17,7 +17,7 @@
 	    		SSH后台管理系统
 	    	</div>
 	    	<div style="position:absolute;top:15px;right:50px;font-size:20px;">
-				<a href="logout" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-clear'">退出系统</a>
+				<a href="logout.jhtml" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-clear'">退出系统</a>
 			</div>
 	    </div>
 	    [#-- 下 --]

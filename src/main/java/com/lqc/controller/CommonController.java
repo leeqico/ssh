@@ -23,7 +23,7 @@ public class CommonController {
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public String login() {
 		Subject currentUser = SecurityUtils.getSubject();
-		return currentUser.isAuthenticated() ? "redirect:/main" : "/common/login";
+		return currentUser.isAuthenticated() ? "redirect:/main.jhtml" : "/common/login";
 	}
 	
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
@@ -43,7 +43,7 @@ public class CommonController {
                 System.out.println("登录失败："+ ae.getMessage());
             }
         }
-		return "redirect:/main";
+		return "redirect:/main.jhtml";
 	}
 	
 	@RequestMapping(value = "/main", method = RequestMethod.GET)

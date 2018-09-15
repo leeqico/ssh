@@ -29,9 +29,10 @@
 		<load-on-startup>1</load-on-startup>
 	</servlet>
 
+	<!-- web请求 -->
 	<servlet-mapping>
 		<servlet-name>springDispatcherServlet</servlet-name>
-		<url-pattern>/</url-pattern>
+		<url-pattern>*.jhtml</url-pattern>
 	</servlet-mapping>
 	
 	<!-- 
@@ -48,7 +49,11 @@
 
     <filter-mapping>
         <filter-name>shiroFilter</filter-name>
-        <url-pattern>/*</url-pattern>
+        <url-pattern>*.jhtml</url-pattern>
     </filter-mapping>
+    
+    <welcome-file-list>
+		<welcome-file>index.html</welcome-file>
+	</welcome-file-list>
 	
 </web-app>

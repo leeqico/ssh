@@ -38,9 +38,9 @@
 	<!-- 6.配置shiroFilter，id必须和web.xml文件中配置的DelegatingFilterProxy的<filter-name>一致 -->
     <bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
         <property name="securityManager" ref="securityManager"/>
-        <property name="loginUrl" value="/login"/>
-        <property name="successUrl" value="/main"/>
-        <property name="unauthorizedUrl" value="/unauthorized"/>
+        <property name="loginUrl" value="/login.jhtml"/>
+        <property name="successUrl" value="/main.jhtml"/>
+        <property name="unauthorizedUrl" value="/unauthorized.jhtml"/>
         <property name="filterChainDefinitionMap" ref="filterChainDefinitionMap"></property>
     </bean>
     
