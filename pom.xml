@@ -99,6 +99,14 @@
 		</dependency>
 		<!-- commons end -->
 		
+		<!-- json begin-->
+		<dependency>
+		    <groupId>com.alibaba</groupId>
+		    <artifactId>fastjson</artifactId>
+		    <version>1.2.49</version>
+		</dependency>
+		<!-- json end-->
+		
 	</dependencies>
 	
 </project>

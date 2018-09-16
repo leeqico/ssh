@@ -32,6 +32,11 @@
 	<!-- 将SpringMVC不能处理的请求交给tomcat -->
 	<mvc:default-servlet-handler/>
 	<!-- 能支持SpringMVC更高级的一些功能，JSR303校验，快捷的ajax等等，映射动态请求-->
-	<mvc:annotation-driven></mvc:annotation-driven>
-
+	<!--配置@ResponseBody由fastjson解析-->
+	<mvc:annotation-driven>
+		<mvc:message-converters>
+			<bean class="com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter"></bean>
+		</mvc:message-converters>
+	</mvc:annotation-driven>
+	
 </beans>

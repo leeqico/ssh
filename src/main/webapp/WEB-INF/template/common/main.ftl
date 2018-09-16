@@ -31,22 +31,22 @@
 	    	<div class="easyui-accordion" id="navmenu" style="border:none;">
 	    		<div title="订单管理">
 	    			<ul>
-						<li><a href="#" data-url="order/list">订单处理</a></li>
-						<li><a href="#" data-url="receipt/list">订单收款</a></li>
+						<li><a href="#" data-url="order/list.jhtml">订单处理</a></li>
+						<li><a href="#" data-url="receipt/list.jhtml">订单收款</a></li>
 					</ul>
 	    		</div>
 	    		<div title="库存管理">
 	    			<ul>
-						<li><a href="#" data-url="inStock/list">入库管理</a></li>
-						<li><a href="#" data-url="outStock/list">出库管理</a></li>
-						<li><a href="#" data-url="outStock/list">商品库存</a></li>
+						<li><a href="#" data-url="inStock/list.jhtml">入库管理</a></li>
+						<li><a href="#" data-url="outStock/list.jhtml">出库管理</a></li>
+						<li><a href="#" data-url="goodsStock/list.jhtml">商品库存</a></li>
 					</ul>
 	    		</div>
 	    		<div title="基本档案">
 	    			<ul>
-						<li><a href="#" data-url="user/list">用户档案</a></li>
-						<li><a href="#" data-url="customer/list">客户档案</a></li>
-						<li><a href="#" data-url="customer/list">商品档案</a></li>
+						<li><a href="#" data-url="user/list.jhtml">用户档案</a></li>
+						<li><a href="#" data-url="customer/list.jhtml">客户档案</a></li>
+						<li><a href="#" data-url="goods/list">商品档案</a></li>
 					</ul>
 	    		</div>
 	    	</div>
