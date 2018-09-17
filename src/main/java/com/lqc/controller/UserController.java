@@ -32,14 +32,4 @@ public class UserController {
 		return users;
 	}
 	
-	@RequestMapping("/getUsers")
-	public String getUsers(ModelMap modelMap) {
-		List<User> users = userService.getUsers();
-		System.out.println(users.toString());
-		if (users.size() != 0) {
-			modelMap.put("users", users.toString());
-		}
-		return "users";
-	}
-	
 }
