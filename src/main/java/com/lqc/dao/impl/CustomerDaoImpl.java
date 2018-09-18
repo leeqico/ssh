@@ -36,4 +36,21 @@ public class CustomerDaoImpl implements CustomerDao {
 		currentSession().save(customer);
 	}
 
+	@Override
+	public Customer findCustomerById(String id) {
+		String hql = " from Customer where id = :id";
+		return (Customer) currentSession().createQuery(hql).setParameter("id", id).setMaxResults(1).uniqueResult();
+	}
+
+	@Override
+	public void update(Customer customer) {
+		currentSession().update(customer);
+	}
+
+	@Override
+	public void removeCustomerById(String id) {
+		String sql = "delete from customer where id = :id";
+		currentSession().createSQLQuery(sql).setParameter("id", id).executeUpdate();
+	}
+
 }

@@ -10,4 +10,10 @@ public interface CustomerDao {
 
 	void save(Customer customer);
 
+	Customer findCustomerById(String id);
+
+	void update(Customer customer);
+
+	void removeCustomerById(String id);
+
 }
