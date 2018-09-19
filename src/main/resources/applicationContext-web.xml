@@ -13,7 +13,7 @@
 	</context:component-scan>
 	
 	 <!-- 整合Freemarker -->
-	 <bean id="freeMarkerConfig" class="com.lqc.freemarker.FreeMarkerConfigExtend">
+	 <bean id="freeMarkerConfig" class="org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer">
 	 	<property name="templateLoaderPath" value="/WEB-INF/template/"></property>
 	 	<property name="freemarkerSettings">
 	 		<props>

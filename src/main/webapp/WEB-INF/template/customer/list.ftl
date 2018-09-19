@@ -9,10 +9,10 @@
 <body>
 
 	<div id="tb">
-		<a href="#" id="addButton" class="easyui-linkbutton" data-options="iconCls:'icon-add',plain:true">添加</a>
-		<a href="#" id="editButton" class="easyui-linkbutton" data-options="iconCls:'icon-edit',plain:true">编辑</a>
+		<a href="#" id="addButton" class="easyui-linkbutton" data-options="iconCls:'icon-add',plain:true">增加</a>
 		<a href="#" id="removeButton" class="easyui-linkbutton" data-options="iconCls:'icon-remove',plain:true">删除</a>
-		<a href="#" id="helpButton" class="easyui-linkbutton" data-options="iconCls:'icon-help',plain:true">帮助</a>
+		<a href="#" id="editButton" class="easyui-linkbutton" data-options="iconCls:'icon-edit',plain:true">修改</a>
+		<a href="#" id="viewButton" class="easyui-linkbutton" data-options="iconCls:'icon-search',plain:true">查看</a>
 	</div>
 
 	<table id="datagrid" class="easyui-datagrid" data-options="url:'load.jhtml',toolbar:'#tb',fitColumns:true,singleSelect:true">
@@ -30,10 +30,44 @@
 	<script type="text/javascript" src="/ssh/resources/easyui/jquery.easyui.min.js"></script>
 	<script type="text/javascript" src="/ssh/resources/easyui/locale/easyui-lang-zh_CN.js" ></script>
 	<script type="text/javascript">
+	
+		//增加
 		$('#addButton').click(onAdd);
 		function onAdd(){
 			location.href = 'add.jhtml';
 		}
+		
+		//删除
+		$('#removeButton').click(onRemove);
+		function onRemove(){
+			var selectedRow = $('#datagrid').datagrid('getSelected');
+			if(selectedRow){
+				$.ajax({
+					url: 'remove.jhtml',
+					type: 'POST',
+					cache: false,
+					data: {id: selectedRow.id},
+					dataType: "json",
+					complete: function(){
+						$('#datagrid').datagrid('reload');
+					}
+				});
+			} else {
+				$.messager.show({
+					title:'提示',
+					msg:'请选择一行',
+					timeout:1000,
+					showType:'show',
+					style:{
+						right:'',
+						top:document.body.scrollTop+document.documentElement.scrollTop,
+						bottom:''
+					}
+				});
+			}
+		}
+		
+		//修改
 		$('#editButton').click(onEdit);
 		function onEdit(){
 			var selectedRow = $('#datagrid').datagrid('getSelected');
@@ -53,20 +87,13 @@
 				});
 			}
 		}
-		$('#removeButton').click(onRemove);
-		function onRemove(){
+		
+		//查看
+		$('#viewButton').click(onView);
+		function onView(){
 			var selectedRow = $('#datagrid').datagrid('getSelected');
 			if(selectedRow){
-				$.ajax({
-					url: 'remove.jhtml',
-					type: 'POST',
-					cache: false,
-					data: {id: selectedRow.id},
-					dataType: "json",
-					complete: function(){
-						$('#datagrid').datagrid('reload');
-					}
-				});
+				location.href = 'view.jhtml?id=' + selectedRow.id;
 			} else {
 				$.messager.show({
 					title:'提示',

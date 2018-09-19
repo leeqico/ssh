@@ -83,14 +83,6 @@
 		</dependency>
 		<!-- shiro end -->
 		
-		<!-- freemarker + shiro（标签） begin -->
-		<dependency>
-		    <groupId>net.mingsoft</groupId>
-		    <artifactId>shiro-freemarker-tags</artifactId>
-		    <version>1.0.0</version>
-		</dependency>
-		<!-- freemarker + shiro（标签） end -->
-		
 		<!-- commons begin -->
 		<dependency>
 		    <groupId>org.apache.commons</groupId>

@@ -63,5 +63,13 @@ public class CustomerController {
 		customerService.removeCustomerById(id);
 		return "redirect:/customer/list.jhtml";
 	}
+	
+	@RequestMapping("/view")
+	public String view(ModelMap modelMap, String id) {
+		Customer customer = customerService.findCustomerById(id);
+		modelMap.addAttribute("customer", customer);
+		modelMap.addAttribute("operation", "view");
+		return "/customer/detail";
+	}
 
 }

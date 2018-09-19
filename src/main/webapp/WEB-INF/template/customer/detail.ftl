@@ -11,7 +11,9 @@
 	<div class="easyui-panel" data-options="fit:true">
 		<div id="tb">
 			<a href="#" id="backButton" class="easyui-linkbutton" data-options="iconCls:'icon-back',plain:true">返回</a>
+			[#if operation == 'add' || operation == 'edit']
 			<a href="#" id="saveButton" class="easyui-linkbutton" data-options="iconCls:'icon-save',plain:true">保存</a>
+			[/#if]
 		</div>
 		<div>
 			<form id="detailForm" method="post" action="[#if operation == 'add']save.jhtml[#else]update.jhtml[/#if]">
@@ -46,6 +48,11 @@
 	<script type="text/javascript" src="/ssh/resources/easyui/jquery.easyui.min.js"></script>
 	<script type="text/javascript" src="/ssh/resources/easyui/locale/easyui-lang-zh_CN.js" ></script>
 	<script type="text/javascript">
+		$(function(){
+			[#if operation == 'view']
+				$('.easyui-textbox').textbox('disable',true);
+			[/#if]
+		});
 		$('#saveButton').click(onSave);
 		function onSave(){
 			$("#detailForm").submit();

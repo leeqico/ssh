@@ -1,3 +1,4 @@
+[#assign shiro = JspTaglibs["/WEB-INF/tags/shiro.tld"] /]
 <!DOCTYPE html>
 <html>
 <head>
