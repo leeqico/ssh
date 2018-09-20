@@ -59,7 +59,9 @@
 		//保存
 		$('#saveButton').click(onSave);
 		function onSave(){
-			$("#detailForm").submit();
+			if($("#detailForm").form('validate')){
+				$("#detailForm").submit();
+			}
 		}
 		
 		//返回
@@ -70,14 +72,13 @@
 		
 		//键盘按下事件
 		$(document).keydown(function(event){
-			event.preventDefault(); //阻止浏览器的默认事件
-			switch(event.keyCode){
-				case 27:	//返回（ESC）
-					$('#backButton').trigger('click');
-					break;
-				case 116:	//保存（F5）
-					$('#saveButton').trigger('click');
-					break;
+			var code = event.keyCode;
+			if(code == 27){	//返回（ESC）
+				$('#backButton').trigger('click');
+				return false;
+			} else if(code == 116){	//保存（F5）
+				$('#saveButton').trigger('click');
+				return false;
 			}
 		});
 	</script>

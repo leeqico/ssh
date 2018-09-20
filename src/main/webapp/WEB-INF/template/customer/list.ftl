@@ -114,20 +114,19 @@
 		
 		//键盘按下事件
 		$(document).keydown(function(event){
-			event.preventDefault(); //阻止浏览器的默认事件
-			switch(event.keyCode){
-				case 112:	//增加（F1）
-					$('#addButton').trigger('click');
-					break;
-				case 113:	//删除（F1）
-					$('#removeButton').trigger('click');
-					break;
-				case 114:	//修改（F1）
-					$('#editButton').trigger('click');
-					break;
-				case 115:	//查看（F1）
-					$('#viewButton').trigger('click');
-					break;
+			var code = event.keyCode;
+			if(code == 112){	//增加（F1）
+				$('#addButton').trigger('click');
+				return false;
+			} else if(code == 113){	//删除（F2）
+				$('#removeButton').trigger('click');
+				return false;
+			} else if(code == 114){	//修改（F3）
+				$('#editButton').trigger('click');
+				return false;
+			} else if(code == 115){	//查看（F4）
+				$('#viewButton').trigger('click');
+				return false;
 			}
 		});
 	</script>
