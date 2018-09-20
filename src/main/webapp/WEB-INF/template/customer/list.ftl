@@ -6,7 +6,7 @@
 <link rel="stylesheet" type="text/css" href="/ssh/resources/easyui/themes/default/easyui.css" />
 <link rel="stylesheet" type="text/css" href="/ssh/resources/easyui/themes/icon.css" />
 </head>
-<body>
+<body class="easyui-layout">
 
 	<div id="tb">
 		<a href="#" id="addButton" class="easyui-linkbutton" data-options="iconCls:'icon-add',plain:true">增加</a>
@@ -15,13 +15,13 @@
 		<a href="#" id="viewButton" class="easyui-linkbutton" data-options="iconCls:'icon-search',plain:true">查看</a>
 	</div>
 
-	<table id="datagrid" class="easyui-datagrid" data-options="url:'load.jhtml',toolbar:'#tb',fitColumns:true,singleSelect:true">
+	<table id="datagrid" class="easyui-datagrid" data-options="url:'load.jhtml',toolbar:'#tb',singleSelect:true,rownumbers:true,pagination:true,pageSize:10,pageList:[10,20,30],pagePosition:'bottom',showFooter:true,onDblClickRow:onDblClickRow" style="height:100%">
 		<thead>
 			<tr>
-				<th data-options="field:'name'">姓名</th>
-				<th data-options="field:'mobile'">手机号</th>
-				<th data-options="field:'address'">地址</th>
-				<th data-options="field:'remark'">备注</th>
+				<th data-options="field:'name',width:100">客户名称</th>
+				<th data-options="field:'mobile',width:100">手机号</th>
+				<th data-options="field:'address',width:200">地址</th>
+				<th data-options="field:'remark',width:150">备注</th>
 			</tr>
 	    </thead>
 	</table>
@@ -42,14 +42,22 @@
 		function onRemove(){
 			var selectedRow = $('#datagrid').datagrid('getSelected');
 			if(selectedRow){
-				$.ajax({
-					url: 'remove.jhtml',
-					type: 'POST',
-					cache: false,
-					data: {id: selectedRow.id},
-					dataType: "json",
-					complete: function(){
-						$('#datagrid').datagrid('reload');
+				$.messager.confirm({
+					title: '提示',
+					msg: '确认删除？',
+					fn: function(r){
+						if (r){
+							$.ajax({
+								url: 'remove.jhtml',
+								type: 'POST',
+								cache: false,
+								data: {id: selectedRow.id},
+								dataType: "json",
+								complete: function(){
+									$('#datagrid').datagrid('reload');
+								}
+							});
+						}
 					}
 				});
 			} else {
@@ -95,18 +103,12 @@
 			if(selectedRow){
 				location.href = 'view.jhtml?id=' + selectedRow.id;
 			} else {
-				$.messager.show({
-					title:'提示',
-					msg:'请选择一行',
-					timeout:1000,
-					showType:'show',
-					style:{
-						right:'',
-						top:document.body.scrollTop+document.documentElement.scrollTop,
-						bottom:''
-					}
-				});
+				$.messager.alert('提示','请先选中一行','info');
 			}
+		}
+		
+		function onDblClickRow(rowIndex,rowData){
+			location.href = 'view.jhtml?id=' + rowData.id;
 		}
 	</script>
 </body>

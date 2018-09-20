@@ -20,13 +20,13 @@
 				<input type="hidden" id="id" name="id" value="${customer.id}" />
 				<table>
 					<tr>
-						<td>姓名</td>
+						<td>客户名称</td>
 						<td>
 							<input type="text" class="easyui-textbox" name="name" value="${customer.name}" data-options="required:true"/>
 						</td>
 						<td>手机号</td>
 						<td>
-							<input type="text" class="easyui-textbox" name="mobile" value="${customer.mobile}"/>
+							<input type="text" class="easyui-textbox" name="mobile" value="${customer.mobile}" data-options="validType:'mobile'"/>
 						</td>
 					</tr>
 					<tr>
@@ -47,6 +47,7 @@
 	<script type="text/javascript" src="/ssh/resources/easyui/jquery.min.js"></script>
 	<script type="text/javascript" src="/ssh/resources/easyui/jquery.easyui.min.js"></script>
 	<script type="text/javascript" src="/ssh/resources/easyui/locale/easyui-lang-zh_CN.js" ></script>
+	<script type="text/javascript" src="/ssh/resources/easyui-extension/validatebox-extension.js" ></script>
 	<script type="text/javascript">
 		$(function(){
 			[#if operation == 'view']
