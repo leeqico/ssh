@@ -9,10 +9,10 @@
 <body class="easyui-layout">
 
 	<div id="tb">
-		<a href="#" id="addButton" class="easyui-linkbutton" data-options="iconCls:'icon-add',plain:true">增加</a>
-		<a href="#" id="removeButton" class="easyui-linkbutton" data-options="iconCls:'icon-remove',plain:true">删除</a>
-		<a href="#" id="editButton" class="easyui-linkbutton" data-options="iconCls:'icon-edit',plain:true">修改</a>
-		<a href="#" id="viewButton" class="easyui-linkbutton" data-options="iconCls:'icon-search',plain:true">查看</a>
+		<a href="#" id="addButton" class="easyui-linkbutton" data-options="iconCls:'icon-add',plain:true">增加(F1)</a>
+		<a href="#" id="removeButton" class="easyui-linkbutton" data-options="iconCls:'icon-remove',plain:true">删除(F2)</a>
+		<a href="#" id="editButton" class="easyui-linkbutton" data-options="iconCls:'icon-edit',plain:true">修改(F3)</a>
+		<a href="#" id="viewButton" class="easyui-linkbutton" data-options="iconCls:'icon-search',plain:true">查看(F4)</a>
 	</div>
 
 	<table id="datagrid" class="easyui-datagrid" data-options="url:'load.jhtml',toolbar:'#tb',singleSelect:true,rownumbers:true,pagination:true,pageSize:10,pageList:[10,20,30],pagePosition:'bottom',showFooter:true,onDblClickRow:onDblClickRow" style="height:100%">
@@ -107,9 +107,29 @@
 			}
 		}
 		
+		//双击行查看
 		function onDblClickRow(rowIndex,rowData){
 			location.href = 'view.jhtml?id=' + rowData.id;
 		}
+		
+		//键盘按下事件
+		$(document).keydown(function(event){
+			event.preventDefault(); //阻止浏览器的默认事件
+			switch(event.keyCode){
+				case 112:	//增加（F1）
+					$('#addButton').trigger('click');
+					break;
+				case 113:	//删除（F1）
+					$('#removeButton').trigger('click');
+					break;
+				case 114:	//修改（F1）
+					$('#editButton').trigger('click');
+					break;
+				case 115:	//查看（F1）
+					$('#viewButton').trigger('click');
+					break;
+			}
+		});
 	</script>
 </body>
 </html>

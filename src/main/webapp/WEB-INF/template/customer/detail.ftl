@@ -10,9 +10,9 @@
 
 	<div class="easyui-panel" data-options="fit:true">
 		<div id="tb">
-			<a href="#" id="backButton" class="easyui-linkbutton" data-options="iconCls:'icon-back',plain:true">返回</a>
+			<a href="#" id="backButton" class="easyui-linkbutton" data-options="iconCls:'icon-back',plain:true">返回(ESC)</a>
 			[#if operation == 'add' || operation == 'edit']
-			<a href="#" id="saveButton" class="easyui-linkbutton" data-options="iconCls:'icon-save',plain:true">保存</a>
+			<a href="#" id="saveButton" class="easyui-linkbutton" data-options="iconCls:'icon-save',plain:true">保存(F5)</a>
 			[/#if]
 		</div>
 		<div>
@@ -49,19 +49,37 @@
 	<script type="text/javascript" src="/ssh/resources/easyui/locale/easyui-lang-zh_CN.js" ></script>
 	<script type="text/javascript" src="/ssh/resources/easyui-extension/validatebox-extension.js" ></script>
 	<script type="text/javascript">
+	
 		$(function(){
 			[#if operation == 'view']
 				$('.easyui-textbox').textbox('disable',true);
 			[/#if]
 		});
+		
+		//保存
 		$('#saveButton').click(onSave);
 		function onSave(){
 			$("#detailForm").submit();
 		}
+		
+		//返回
 		$('#backButton').click(onBack);
 		function onBack(){
 			location.href = 'list.jhtml';
 		}
+		
+		//键盘按下事件
+		$(document).keydown(function(event){
+			event.preventDefault(); //阻止浏览器的默认事件
+			switch(event.keyCode){
+				case 27:	//返回（ESC）
+					$('#backButton').trigger('click');
+					break;
+				case 116:	//保存（F5）
+					$('#saveButton').trigger('click');
+					break;
+			}
+		});
 	</script>
 </body>
 </html>
