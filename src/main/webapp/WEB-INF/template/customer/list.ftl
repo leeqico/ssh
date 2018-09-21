@@ -21,6 +21,7 @@
 				<th data-options="field:'name',width:100">客户名称</th>
 				<th data-options="field:'mobile',width:100">手机号</th>
 				<th data-options="field:'address',width:200">地址</th>
+				<th data-options="field:'userName',width:100,formatter:userFormatter">用户</th>
 				<th data-options="field:'remark',width:150">备注</th>
 			</tr>
 	    </thead>
@@ -129,6 +130,15 @@
 				return false;
 			}
 		});
+		
+		function userFormatter(value,row,index){
+			if(row.user){
+				return row.user.name;
+			} else {
+				return value;
+			}
+		}
+		
 	</script>
 </body>
 </html>

@@ -11,7 +11,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.lqc.entity.Customer;
+import com.lqc.entity.User;
 import com.lqc.service.CustomerService;
+import com.lqc.service.UserService;
 
 @Controller
 @RequestMapping("/customer")
@@ -20,8 +22,11 @@ public class CustomerController {
 	@Resource(name = "customerServiceImpl")
 	private CustomerService customerService;
 	
+	@Resource(name = "userServiceImpl")
+	private UserService userService;
+	
 	@RequestMapping("/list")
-	public String list() {
+	public String list(ModelMap modelMap) {
 		return "/customer/list";
 	}
 	
@@ -35,6 +40,8 @@ public class CustomerController {
 	@RequestMapping("/add")
 	public String add(ModelMap modelMap) {
 		modelMap.addAttribute("operation", "add");
+		List<User> users = userService.getUsers();
+		modelMap.addAttribute("users", users);
 		return "/customer/detail";
 	}
 	
@@ -46,9 +53,11 @@ public class CustomerController {
 	
 	@RequestMapping("/edit")
 	public String edit(ModelMap modelMap, String id) {
+		modelMap.addAttribute("operation", "edit");
 		Customer customer = customerService.findCustomerById(id);
 		modelMap.addAttribute("customer", customer);
-		modelMap.addAttribute("operation", "edit");
+		List<User> users = userService.getUsers();
+		modelMap.addAttribute("users", users);
 		return "/customer/detail";
 	}
 	
@@ -66,9 +75,11 @@ public class CustomerController {
 	
 	@RequestMapping("/view")
 	public String view(ModelMap modelMap, String id) {
+		modelMap.addAttribute("operation", "view");
 		Customer customer = customerService.findCustomerById(id);
 		modelMap.addAttribute("customer", customer);
-		modelMap.addAttribute("operation", "view");
+		List<User> users = userService.getUsers();
+		modelMap.addAttribute("users", users);
 		return "/customer/detail";
 	}
 

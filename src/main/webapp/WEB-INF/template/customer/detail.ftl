@@ -22,21 +22,30 @@
 					<tr>
 						<td>客户名称</td>
 						<td>
-							<input type="text" class="easyui-textbox" name="name" value="${customer.name}" data-options="required:true"/>
+							<input type="text" class="easyui-textbox" style="width:180px" name="name" value="${customer.name}" data-options="required:true"/>
 						</td>
 						<td>手机号</td>
 						<td>
-							<input type="text" class="easyui-textbox" name="mobile" value="${customer.mobile}" data-options="validType:'mobile'"/>
+							<input type="text" class="easyui-textbox" style="width:180px" name="mobile" value="${customer.mobile}" data-options="validType:'mobile'"/>
 						</td>
 					</tr>
 					<tr>
 						<td>地址</td>
 						<td>
-							<input type="text" class="easyui-textbox" name="address" value="${customer.address}"/>
+							<input type="text" class="easyui-textbox" style="width:180px" name="address" value="${customer.address}"/>
+						</td>
+						<td>用户</td>
+						<td>
+							<select class="easyui-combobox" style="width:180px" name="user.id">
+								<option value="">请选择...</option>
+								[#list users as user]
+									<option value="${user.id}" [#if user.id == customer.user.id]selected="selected"[/#if]>${user.name}</option>
+								[/#list]
+							</select>
 						</td>
 						<td>备注</td>
 						<td>
-							<input type="text" class="easyui-textbox" name="remark" value="${customer.remark}"/>
+							<input type="text" class="easyui-textbox" style="width:180px" name="remark" value="${customer.remark}"/>
 						</td>
 					</tr>
 				</table>
@@ -53,6 +62,7 @@
 		$(function(){
 			[#if operation == 'view']
 				$('.easyui-textbox').textbox('disable',true);
+				$('.easyui-combobox').textbox('disable',true);
 			[/#if]
 		});
 		
