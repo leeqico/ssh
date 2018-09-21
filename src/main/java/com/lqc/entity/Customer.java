@@ -2,11 +2,15 @@ package com.lqc.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.NotFound;
+import org.hibernate.annotations.NotFoundAction;
 
 @Entity
 @Table(name = "customer")
@@ -19,6 +23,8 @@ public class Customer {
 	private String mobile;
 	
 	private String address;
+	
+	private User user;
 	
 	private String remark;
 
@@ -56,6 +62,16 @@ public class Customer {
 
 	public void setAddress(String address) {
 		this.address = address;
+	}
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+	@NotFound(action = NotFoundAction.IGNORE)
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
 	}
 
 	public String getRemark() {
