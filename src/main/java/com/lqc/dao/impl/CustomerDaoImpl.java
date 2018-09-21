@@ -5,6 +5,7 @@ import java.util.List;
 import javax.annotation.Resource;
 
 import org.hibernate.FlushMode;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.stereotype.Repository;
@@ -51,6 +52,17 @@ public class CustomerDaoImpl implements CustomerDao {
 	public void removeCustomerById(String id) {
 		String sql = "delete from customer where id = :id";
 		currentSession().createSQLQuery(sql).setParameter("id", id).executeUpdate();
+	}
+
+	@Override
+	public List<Customer> findList(String name) {
+		String namehql = name == null ? "" : " where name like :name ";
+		String hql = " from Customer " + namehql;
+		Query query = currentSession().createQuery(hql);
+		if (name != null) {
+			query.setParameter("name", "%"+name+"%");
+		}
+		return query.list();
 	}
 
 }

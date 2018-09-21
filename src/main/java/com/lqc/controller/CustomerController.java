@@ -32,8 +32,9 @@ public class CustomerController {
 	
 	@ResponseBody
 	@RequestMapping("/load")
-	public List<Customer> load() {
-		List<Customer> customers = customerService.findAll();
+	public List<Customer> load(String name) {
+//		List<Customer> customers = customerService.findAll();
+		List<Customer> customers = customerService.findList(name);
 		return customers;
 	}
 	

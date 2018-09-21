@@ -13,6 +13,15 @@
 		<a href="#" id="removeButton" class="easyui-linkbutton" data-options="iconCls:'icon-remove',plain:true">删除(F2)</a>
 		<a href="#" id="editButton" class="easyui-linkbutton" data-options="iconCls:'icon-edit',plain:true">修改(F3)</a>
 		<a href="#" id="viewButton" class="easyui-linkbutton" data-options="iconCls:'icon-search',plain:true">查看(F4)</a>
+		<form id="form">
+			<td>客户名称</td>
+			<td>
+				<input type="text" class="easyui-textbox" style="width:180px" id="name" name="name"/>
+			</td>
+			<td>
+				<a href="#" id="searchButton" class="easyui-linkbutton" data-options="iconCls:'icon-search',plain:true" onclick="formSubmit();">搜索</a>
+			</td>
+		</form>
 	</div>
 
 	<table id="datagrid" class="easyui-datagrid" data-options="url:'load.jhtml',toolbar:'#tb',singleSelect:true,rownumbers:true,pagination:true,pageSize:10,pageList:[10,20,30],pagePosition:'bottom',showFooter:true,onDblClickRow:onDblClickRow" style="height:100%">
@@ -31,6 +40,10 @@
 	<script type="text/javascript" src="/ssh/resources/easyui/jquery.easyui.min.js"></script>
 	<script type="text/javascript" src="/ssh/resources/easyui/locale/easyui-lang-zh_CN.js" ></script>
 	<script type="text/javascript">
+	
+		$(function(){
+			formSubmit();
+		});
 	
 		//增加
 		$('#addButton').click(onAdd);
@@ -131,12 +144,20 @@
 			}
 		});
 		
+		//用户格式化
 		function userFormatter(value,row,index){
 			if(row.user){
 				return row.user.name;
 			} else {
 				return value;
 			}
+		}
+		
+		//搜索
+		function formSubmit(){
+			$('#datagrid').datagrid('clearSelections');
+			var name = $('#name').textbox('getValue');
+			$('#datagrid').datagrid('load',{name:name});
 		}
 		
 	</script>

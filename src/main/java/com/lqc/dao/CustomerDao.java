@@ -16,4 +16,6 @@ public interface CustomerDao {
 
 	void removeCustomerById(String id);
 
+	List<Customer> findList(String name);
+
 }

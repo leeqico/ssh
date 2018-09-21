@@ -48,4 +48,10 @@ public class CustomerServiceImpl implements CustomerService {
 		customerDao.removeCustomerById(id);
 	}
 
+	@Override
+	@Transactional(readOnly = true)
+	public List<Customer> findList(String name) {
+		return customerDao.findList(name);
+	}
+
 }
