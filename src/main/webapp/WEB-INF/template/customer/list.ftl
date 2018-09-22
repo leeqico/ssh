@@ -24,7 +24,7 @@
 		</form>
 	</div>
 
-	<table id="datagrid" class="easyui-datagrid" data-options="url:'load.jhtml',toolbar:'#tb',singleSelect:true,rownumbers:true,pagination:true,pageSize:10,pageList:[10,20,30],pagePosition:'bottom',showFooter:true,onDblClickRow:onDblClickRow" style="height:100%">
+	<table id="datagrid" class="easyui-datagrid" data-options="url:'load.jhtml',toolbar:'#tb',singleSelect:true,rownumbers:true,pagination:true,pageSize:10,pageList:[10,20,30],pagePosition:'bottom',onDblClickRow:onDblClickRow" style="height:100%">
 		<thead>
 			<tr>
 				<th data-options="field:'name',width:100">客户名称</th>

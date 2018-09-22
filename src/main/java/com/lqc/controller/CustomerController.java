@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.lqc.common.Page;
+import com.lqc.common.Pageable;
 import com.lqc.entity.Customer;
 import com.lqc.entity.User;
 import com.lqc.service.CustomerService;
@@ -32,9 +34,10 @@ public class CustomerController {
 	
 	@ResponseBody
 	@RequestMapping("/load")
-	public List<Customer> load(String name) {
+	public Page<Customer> load(String name, Pageable pageable) {
 //		List<Customer> customers = customerService.findAll();
-		List<Customer> customers = customerService.findList(name);
+//		List<Customer> customers = customerService.findList(name);
+		Page<Customer> customers = customerService.findPage(pageable, name);
 		return customers;
 	}
 	

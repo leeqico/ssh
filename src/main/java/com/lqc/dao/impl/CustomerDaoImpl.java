@@ -1,5 +1,6 @@
 package com.lqc.dao.impl;
 
+import java.util.Collections;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -10,6 +11,8 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.stereotype.Repository;
 
+import com.lqc.common.Page;
+import com.lqc.common.Pageable;
 import com.lqc.dao.CustomerDao;
 import com.lqc.entity.Customer;
 
@@ -63,6 +66,29 @@ public class CustomerDaoImpl implements CustomerDao {
 			query.setParameter("name", "%"+name+"%");
 		}
 		return query.list();
+	}
+
+	@Override
+	public Page<Customer> findPage(Pageable pageable, String name) {
+		String nameHql = name == null ? "" : " where name like :name ";
+		String findListHql = " from Customer " + nameHql;
+		String countHql = " select count(1) from Customer " + nameHql;
+		Query query = currentSession().createQuery(countHql);
+		if (name != null) {
+			query.setParameter("name", "%"+name+"%");
+		}
+		Long total = (Long) query.uniqueResult();
+		List<Customer> rows = null;
+		if (total > 0) {
+			Query countQuery = currentSession().createQuery(findListHql);
+			if (name != null) {
+				countQuery.setParameter("name", "%"+name+"%");
+			}
+			rows = countQuery.setFirstResult((pageable.getPage()-1)*pageable.getRows()).setMaxResults(pageable.getRows()).list();
+		} else {
+			rows = Collections.emptyList();
+		}
+		return new Page<Customer>(total,rows) ;
 	}
 
 }

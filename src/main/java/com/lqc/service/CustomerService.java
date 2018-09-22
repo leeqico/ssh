@@ -2,6 +2,8 @@ package com.lqc.service;
 
 import java.util.List;
 
+import com.lqc.common.Page;
+import com.lqc.common.Pageable;
 import com.lqc.entity.Customer;
 
 public interface CustomerService {
@@ -17,5 +19,7 @@ public interface CustomerService {
 	void removeCustomerById(String id);
 
 	List<Customer> findList(String name);
+
+	Page<Customer> findPage(Pageable pageable, String name);
 	
 }

@@ -7,6 +7,8 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.lqc.common.Page;
+import com.lqc.common.Pageable;
 import com.lqc.dao.CustomerDao;
 import com.lqc.entity.Customer;
 import com.lqc.service.CustomerService;
@@ -52,6 +54,12 @@ public class CustomerServiceImpl implements CustomerService {
 	@Transactional(readOnly = true)
 	public List<Customer> findList(String name) {
 		return customerDao.findList(name);
+	}
+
+	@Override
+	@Transactional(readOnly = true)
+	public Page<Customer> findPage(Pageable pageable, String name) {
+		return customerDao.findPage(pageable,name);
 	}
 
 }
