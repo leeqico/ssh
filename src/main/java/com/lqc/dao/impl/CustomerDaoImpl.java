@@ -11,13 +11,14 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.stereotype.Repository;
 
-import com.lqc.common.Page;
-import com.lqc.common.Pageable;
+import com.lqc.common.dao.BaseDaoImpl;
+import com.lqc.common.query.Page;
+import com.lqc.common.query.Pageable;
 import com.lqc.dao.CustomerDao;
 import com.lqc.entity.Customer;
 
 @Repository(value = "customerDaoImpl")
-public class CustomerDaoImpl implements CustomerDao {
+public class CustomerDaoImpl extends BaseDaoImpl<Customer> implements CustomerDao {
 	
 	@Resource(name = "sessionFactory")
 	private SessionFactory sessionFactory;

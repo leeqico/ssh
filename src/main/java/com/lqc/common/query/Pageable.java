@@ -1,4 +1,4 @@
-package com.lqc.common;
+package com.lqc.common.query;
 
 import java.io.Serializable;
 

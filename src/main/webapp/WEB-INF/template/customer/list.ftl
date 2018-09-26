@@ -24,7 +24,7 @@
 		</form>
 	</div>
 
-	<table id="datagrid" class="easyui-datagrid" data-options="url:'load.jhtml',toolbar:'#tb',singleSelect:true,rownumbers:true,pagination:true,pageSize:10,pageList:[10,20,30],pagePosition:'bottom',onDblClickRow:onDblClickRow" style="height:100%">
+	<table id="dataGrid" class="easyui-datagrid" data-options="url:'load.jhtml',toolbar:'#tb',singleSelect:true,rownumbers:true,pagination:true,pageSize:10,pageList:[10,20,30],pagePosition:'bottom',onDblClickRow:onDblClickRow" style="height:100%">
 		<thead>
 			<tr>
 				<th data-options="field:'name',width:100">客户名称</th>
@@ -39,6 +39,7 @@
 	<script type="text/javascript" src="/ssh/resources/easyui/jquery.min.js"></script>
 	<script type="text/javascript" src="/ssh/resources/easyui/jquery.easyui.min.js"></script>
 	<script type="text/javascript" src="/ssh/resources/easyui/locale/easyui-lang-zh_CN.js" ></script>
+	<script type="text/javascript" src="/ssh/resources/js/list.js" ></script>
 	<script type="text/javascript">
 	
 		$(function(){
@@ -54,7 +55,7 @@
 		//删除
 		$('#removeButton').click(onRemove);
 		function onRemove(){
-			var selectedRow = $('#datagrid').datagrid('getSelected');
+			var selectedRow = $('#dataGrid').datagrid('getSelected');
 			if(selectedRow){
 				$.messager.confirm({
 					title: '提示',
@@ -68,7 +69,7 @@
 								data: {id: selectedRow.id},
 								dataType: "json",
 								complete: function(){
-									$('#datagrid').datagrid('reload');
+									$('#dataGrid').datagrid('reload');
 								}
 							});
 						}
@@ -92,7 +93,7 @@
 		//修改
 		$('#editButton').click(onEdit);
 		function onEdit(){
-			var selectedRow = $('#datagrid').datagrid('getSelected');
+			var selectedRow = $('#dataGrid').datagrid('getSelected');
 			if(selectedRow){
 				location.href = 'edit.jhtml?id=' + selectedRow.id;
 			} else {
@@ -113,7 +114,7 @@
 		//查看
 		$('#viewButton').click(onView);
 		function onView(){
-			var selectedRow = $('#datagrid').datagrid('getSelected');
+			var selectedRow = $('#dataGrid').datagrid('getSelected');
 			if(selectedRow){
 				location.href = 'view.jhtml?id=' + selectedRow.id;
 			} else {
@@ -151,13 +152,6 @@
 			} else {
 				return value;
 			}
-		}
-		
-		//搜索
-		function formSubmit(){
-			$('#datagrid').datagrid('clearSelections');
-			var name = $('#name').textbox('getValue');
-			$('#datagrid').datagrid('load',{name:name});
 		}
 		
 	</script>

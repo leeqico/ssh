@@ -10,8 +10,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.lqc.common.Page;
-import com.lqc.common.Pageable;
+import com.lqc.common.controller.BaseController;
+import com.lqc.common.query.Page;
+import com.lqc.common.query.Pageable;
+import com.lqc.common.query.PropertyFilter;
 import com.lqc.entity.Customer;
 import com.lqc.entity.User;
 import com.lqc.service.CustomerService;
@@ -19,7 +21,7 @@ import com.lqc.service.UserService;
 
 @Controller
 @RequestMapping("/customer")
-public class CustomerController {
+public class CustomerController extends BaseController{
 	
 	@Resource(name = "customerServiceImpl")
 	private CustomerService customerService;
@@ -34,10 +36,9 @@ public class CustomerController {
 	
 	@ResponseBody
 	@RequestMapping("/load")
-	public Page<Customer> load(String name, Pageable pageable) {
-//		List<Customer> customers = customerService.findAll();
-//		List<Customer> customers = customerService.findList(name);
-		Page<Customer> customers = customerService.findPage(pageable, name);
+	public Page<Customer> load(String filterRules, Pageable pageable) {
+		PropertyFilter[] propertyFilters = parsePropertyFilters(filterRules);
+		Page<Customer> customers = customerService.findPage(propertyFilters,pageable);
 		return customers;
 	}
 	

@@ -2,11 +2,12 @@ package com.lqc.dao;
 
 import java.util.List;
 
-import com.lqc.common.Page;
-import com.lqc.common.Pageable;
+import com.lqc.common.dao.BaseDao;
+import com.lqc.common.query.Page;
+import com.lqc.common.query.Pageable;
 import com.lqc.entity.Customer;
 
-public interface CustomerDao {
+public interface CustomerDao extends BaseDao<Customer>{
 
 	List<Customer> findAll();
 

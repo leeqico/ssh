@@ -7,8 +7,9 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.lqc.common.Page;
-import com.lqc.common.Pageable;
+import com.lqc.common.query.Page;
+import com.lqc.common.query.Pageable;
+import com.lqc.common.query.PropertyFilter;
 import com.lqc.dao.CustomerDao;
 import com.lqc.entity.Customer;
 import com.lqc.service.CustomerService;
@@ -58,8 +59,8 @@ public class CustomerServiceImpl implements CustomerService {
 
 	@Override
 	@Transactional(readOnly = true)
-	public Page<Customer> findPage(Pageable pageable, String name) {
-		return customerDao.findPage(pageable,name);
+	public Page<Customer> findPage(PropertyFilter[] propertyFilters, Pageable pageable) {
+		return customerDao.findPage(propertyFilters, pageable);
 	}
 
 }

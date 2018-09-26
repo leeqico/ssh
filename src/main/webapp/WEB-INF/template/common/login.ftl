@@ -15,14 +15,14 @@
 				<tr>
 					<td>Mobile:</td>
 					<td>
-						<input class="easyui-textbox" type="text" id="mobile" name="mobile" data-options="iconCls:'icon-man',validType:'mobile',required:true,prompt:'请输入您的手机号'"/>
+						<input class="easyui-textbox" type="text" id="mobile" name="mobile" value="18826230693" data-options="iconCls:'icon-man',validType:'mobile',required:true,prompt:'请输入您的手机号'"/>
 					</td>
 				</tr>
 				<br>
 				<tr>
 					<td>Password:</td>
 					<td>
-						<input class="easyui-textbox" type="password" id="password" name="password" data-options="iconCls:'icon-lock',required:true"/>
+						<input class="easyui-textbox" type="password" id="password" name="password" value="123456" data-options="iconCls:'icon-lock',required:true"/>
 					</td>
 				</tr>
 				<tr>

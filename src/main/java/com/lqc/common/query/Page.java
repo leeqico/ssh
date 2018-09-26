@@ -1,9 +1,14 @@
-package com.lqc.common;
+package com.lqc.common.query;
 
 import java.io.Serializable;
 import java.util.Collections;
 import java.util.List;
-
+/**
+ * 分页
+ * 
+ * @author liqc
+ * @param <T>
+ */
 public class Page<T> implements Serializable {
 	
 	private static final long serialVersionUID = -4976782667943852089L;
