@@ -22,7 +22,7 @@ function transformQueryParas(form) {
 			var key = items[0];
 			var value = items[1];
 			var keyclass = $("[id='"+key+"']").attr('class');
-			if(keyclass.indexof('easyui-textbox') != -1){
+			if(keyclass.indexOf('easyui-textbox') != -1){
 				var fieldFilter = '{"field":"'+key+'","op":"contains","value":"'+value+'"}';
 				filterFields.push(fieldFilter);
 			}
