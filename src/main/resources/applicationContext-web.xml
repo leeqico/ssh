@@ -17,9 +17,12 @@
 	 	<property name="templateLoaderPath" value="/WEB-INF/template/"></property>
 	 	<property name="freemarkerSettings">
 	 		<props>
-	 			<!-- FreeMarker默认每隔5秒检查模板是否被更新，如果已经更新了，就会重新加载并分析模板。 但经常检查模板是否更新可能比较耗时。如果你的应用运行在生产模式下，而且你预期模板不会经常更新，   
-            则可以将更新的延迟时间延长至一个小时或者更久。 可以通过为freemarkerSettings属性设置template_update_delay达到这一目的 -->
-            	<prop key="template_update_delay">3600</prop>
+	 			<!-- 
+	 				FreeMarker默认每隔5秒检查模板是否被更新，如果已经更新了，就会重新加载并分析模板。 但经常检查模板是否更新可能比较耗时。
+	 				如果你的应用运行在生产模式下，而且你预期模板不会经常更新，则可以将更新的延迟时间延长至一个小时或者更久。 
+	 				如果你的应用运行在开发模式下，0 表示不检测模板，直接重新加载并分析模板。
+	 				可以通过为freemarkerSettings属性设置template_update_delay达到这一目的 -->
+            	<prop key="template_update_delay">0</prop>
             	<!-- 设置标签类型 两种：[] 和 <> 。[] 这种标记解析要快些,所以设置成 [] 类型的标签-->
 	 			<prop key="tag_syntax">auto_detect</prop>
 	 			<prop key="defaultEncoding">UTF-8</prop>

@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <title>客户档案</title>
-<link rel="stylesheet" type="text/css" href="/ssh/resources/easyui/themes/default/easyui.css" />
-<link rel="stylesheet" type="text/css" href="/ssh/resources/easyui/themes/icon.css" />
+<link rel="stylesheet" type="text/css" href="/resources/easyui/themes/default/easyui.css" />
+<link rel="stylesheet" type="text/css" href="/resources/easyui/themes/icon.css" />
 </head>
 <body class="easyui-layout">
 
@@ -36,10 +36,10 @@
 	    </thead>
 	</table>
 
-	<script type="text/javascript" src="/ssh/resources/easyui/jquery.min.js"></script>
-	<script type="text/javascript" src="/ssh/resources/easyui/jquery.easyui.min.js"></script>
-	<script type="text/javascript" src="/ssh/resources/easyui/locale/easyui-lang-zh_CN.js" ></script>
-	<script type="text/javascript" src="/ssh/resources/js/list.js" ></script>
+	<script type="text/javascript" src="/resources/easyui/jquery.min.js"></script>
+	<script type="text/javascript" src="/resources/easyui/jquery.easyui.min.js"></script>
+	<script type="text/javascript" src="/resources/easyui/locale/easyui-lang-zh_CN.js" ></script>
+	<script type="text/javascript" src="/resources/js/list.js" ></script>
 	<script type="text/javascript">
 	
 		$(function(){
