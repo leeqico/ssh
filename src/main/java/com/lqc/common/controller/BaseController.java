@@ -25,7 +25,7 @@ public abstract class BaseController {
 	 */
 	protected PropertyFilter[] parsePropertyFilters(String filterRules) {
 		List<FilterRule> filterRuleList = JSON.parseArray(filterRules, FilterRule.class);
-		List<PropertyFilter> propertyFilterList = new ArrayList<>(HashMapUtils.bestInitialCapacity(filterRuleList.size()));
+		List<PropertyFilter> propertyFilterList = new ArrayList<>();
 		if (CollectionUtils.isNotEmpty(filterRuleList)) {
 			for (FilterRule filterRule : filterRuleList) {
 				String field = filterRule.getField();
