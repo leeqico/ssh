@@ -86,4 +86,10 @@ public class UserServiceImpl implements UserService{
 		userDao.save(user);
 	}
 
+	@Override
+	@Transactional(readOnly = true)
+	public User findById(String userId) {
+		return userDao.findById(userId);
+	}
+
 }

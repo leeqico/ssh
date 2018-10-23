@@ -5,9 +5,7 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
-import org.hibernate.FlushMode;
 import org.hibernate.Query;
-import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.stereotype.Repository;
 
@@ -22,15 +20,8 @@ public class CustomerDaoImpl extends BaseDaoImpl<Customer> implements CustomerDa
 	
 	@Resource(name = "sessionFactory")
 	private SessionFactory sessionFactory;
-	
-	protected Session currentSession() {
-		Session session = sessionFactory.getCurrentSession();
-		if (!FlushMode.COMMIT.equals(session.getFlushMode())) {
-			session.setFlushMode(FlushMode.COMMIT);
-		}
-		return session;
-	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<Customer> findAll() {
 		return currentSession().createQuery("from Customer").list();
@@ -58,6 +49,7 @@ public class CustomerDaoImpl extends BaseDaoImpl<Customer> implements CustomerDa
 		currentSession().createSQLQuery(sql).setParameter("id", id).executeUpdate();
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<Customer> findList(String name) {
 		String namehql = name == null ? "" : " where name like :name ";
@@ -69,6 +61,7 @@ public class CustomerDaoImpl extends BaseDaoImpl<Customer> implements CustomerDa
 		return query.list();
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public Page<Customer> findPage(Pageable pageable, String name) {
 		String nameHql = name == null ? "" : " where name like :name ";

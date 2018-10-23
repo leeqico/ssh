@@ -45,4 +45,11 @@ public interface UserService {
 	 */
 	void register(String name, String mobile, String password);
 
+	/**
+	 * 根据id查找用户实体
+	 * @param userId
+	 * @return
+	 */
+	User findById(String userId);
+
 }

@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -51,7 +52,10 @@ public class CustomerController extends BaseController{
 	}
 	
 	@RequestMapping(value = "/save", method = RequestMethod.POST)
-	public String save(Customer customer) {
+	public String save(Customer customer, String userId) {
+		if (StringUtils.isNotEmpty(userId)) {
+			customer.setUser(userService.findById(userId));
+		}
 		customerService.save(customer);
 		return "redirect:/customer/list.jhtml";
 	}
@@ -67,7 +71,10 @@ public class CustomerController extends BaseController{
 	}
 	
 	@RequestMapping(value = "/update", method = RequestMethod.POST)
-	public String update(Customer customer) {
+	public String update(Customer customer, String userId) {
+		if (StringUtils.isNotEmpty(userId)) {
+			customer.setUser(userService.findById(userId));
+		}
 		customerService.update(customer);
 		return "redirect:/customer/list.jhtml";
 	}

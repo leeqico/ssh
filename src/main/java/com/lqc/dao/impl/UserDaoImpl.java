@@ -51,4 +51,11 @@ public class UserDaoImpl implements UserDao{
 		currentSession().save(user);
 	}
 
+	@Override
+	public User findById(String userId) {
+		String hql = "from User where id = :userId";
+		Query query = currentSession().createQuery(hql).setParameter("userId", userId);
+		return (User) query.setMaxResults(1).uniqueResult();
+	}
+
 }

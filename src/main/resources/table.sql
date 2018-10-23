@@ -21,7 +21,7 @@ create table customer(
 	name varchar(100) not null comment '名称',
 	mobile varchar(100) comment '手机号',
 	address varchar(255) comment '地址',
-	user char(32) comment '用户',
+	`user` char(32) comment '用户',
 	remark varchar(255) comment '备注'
 )engine=innodb default charset=utf8mb4 comment='客户档案';
 

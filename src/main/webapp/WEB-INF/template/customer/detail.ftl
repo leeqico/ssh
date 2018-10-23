@@ -36,7 +36,7 @@
 						</td>
 						<td>用户</td>
 						<td>
-							<select class="easyui-combobox" style="width:180px" name="user.id">
+							<select class="easyui-combobox" style="width:180px" name="userId">
 								<option value="">请选择...</option>
 								[#list users as user]
 									<option value="${user.id}" [#if user.id == customer.user.id]selected="selected"[/#if]>${user.name}</option>
