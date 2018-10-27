@@ -1,0 +1,168 @@
+@charset "utf-8";
+/* CSS Document */
+.print {
+	width: 800px;
+	padding-bottom: 20px;
+	font-family: "微软雅黑";
+	margin: auto;
+	font-weight: bold;
+}
+
+.print_top {
+	width: 100%;
+}
+
+ul, li {
+	margin: 0px;
+	padding: 0px;
+	list-style: none;
+}
+
+.print_top .title {
+	width: 100%;
+	font-size: 20px;
+	text-align: center;
+	font-weight: bold;
+	letter-spacing: 3px;
+}
+
+.print_top .title .title_head {
+	padding-left: 10px;
+	margin-left: 0px;
+}
+
+.print_top .title .page {
+	float: right;
+	font-size: 15px;
+	font-weight: normal;
+}
+
+.print_top .title .printTime {
+	float: left;
+	font-size: 12px;
+	font-weight: normal;
+}
+
+.print_top .title_note {
+	text-align: center;
+	font-size: 13px;
+}
+
+.print_top table {
+	width: 100%;
+	margin-top: 5px;
+	color: black;
+	font-size: 15px;
+}
+
+.print_top table td {
+	height: 23px;
+}
+
+.print_middle {
+	width: 100%;
+	color: black;
+}
+
+.print_middle table {
+	font-size: 15px;
+	border-collapse: collapse;
+	width: 100%;
+}
+
+.print_middle table tr {
+	height: 20px;
+}
+
+.print_middle table tr td {
+	text-align: center;
+	border: 1px solid black;
+}
+
+.print_middle .print_table tr td {
+	text-align: center;
+	border: 0px;
+}
+
+.print_middle table .left_td {
+	text-align: left;
+	padding-left: 5px;
+}
+
+.print_middle table .right_td {
+	text-align: right;
+	padding-right: 5px;
+}
+
+.print_middle table .subtotal {
+	border-right: 0px;
+	text-align: left;
+	padding-left: 10px;
+}
+
+.print_middle table .none_border {
+	border: 0px;
+}
+
+.print_middle table .border_left {
+	border-left: 1px;
+}
+
+.print_middle table .tr_border {
+	border-left: 1px sold;
+}
+
+.print_middle table .total_money {
+	float: left;
+	padding-left: 4px;
+}
+
+.print_middle table .padding_right {
+	padding_right: 50px;
+}
+
+.print_middle table .t {
+	color: black;
+}
+
+.print_middle table td span {
+	margin-left: 6px;
+}
+
+.print_bottom {
+	width: 100%;
+}
+
+.print_bottom table {
+    width: 100%;
+    margin-top: 5px;
+    color: black;
+    font-size: 15px;
+}
+
+.print_bottom span {
+	margin-left: 10px;
+	line-height: 20px;
+	font-size: 15px;
+	color: black;
+}
+.print_button {
+	width: 800px;
+	font-family: "微软雅黑";
+	margin: auto;
+}
+
+img{
+    -ms-transform:rotate(-90deg); /* IE 9 */
+    -moz-transform:rotate(-90deg); /* Firefox */
+    -webkit-transform:rotate(-90deg); /* Safari and Chrome */
+    -o-transform:rotate(-90deg); /* Opera */
+    filter:progid:DXImageTransform.Microsoft.BasicImage(rotation=3);     
+}
+
+.excelImg{
+    -ms-transform:rotate(0deg); /* IE 9 */
+    -moz-transform:rotate(0deg); /* Firefox */
+    -webkit-transform:rotate(0deg); /* Safari and Chrome */
+    -o-transform:rotate(0deg); /* Opera */   
+}

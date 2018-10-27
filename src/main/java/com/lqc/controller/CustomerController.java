@@ -94,5 +94,12 @@ public class CustomerController extends BaseController{
 		modelMap.addAttribute("users", users);
 		return "/customer/detail";
 	}
+	
+	@RequestMapping("/print")
+	public String print(ModelMap modelMap, String id) {
+		Customer customer = customerService.findCustomerById(id);
+		modelMap.addAttribute("customer", customer);
+		return "/customer/print";
+	}
 
 }

@@ -13,6 +13,7 @@
 		<a href="#" id="removeButton" class="easyui-linkbutton" data-options="iconCls:'icon-remove',plain:true">删除(F2)</a>
 		<a href="#" id="editButton" class="easyui-linkbutton" data-options="iconCls:'icon-edit',plain:true">修改(F3)</a>
 		<a href="#" id="viewButton" class="easyui-linkbutton" data-options="iconCls:'icon-search',plain:true">查看(F4)</a>
+		<a href="#" id="printButton" class="easyui-linkbutton" data-options="iconCls:'icon-print',plain:true">打印(F5)</a>
 		<form id="form">
 			<td>客户名称</td>
 			<td>
@@ -127,6 +128,18 @@
 			location.href = 'view.jhtml?id=' + rowData.id;
 		}
 		
+		// 打印
+		$('#printButton').click(onPrint);
+		function onPrint(){
+			var selectedRow = $('#dataGrid').datagrid('getSelected');
+			if(selectedRow){
+				window.open('print.jhtml?id='+selectedRow.id);
+				$('#dataGrid').datagrid('reload');
+			} else {
+				$.messager.alert('提示','请先选中一行','info');
+			}
+		}
+		
 		//键盘按下事件
 		$(document).keydown(function(event){
 			var code = event.keyCode;
@@ -141,6 +154,9 @@
 				return false;
 			} else if(code == 115){	//查看（F4）
 				$('#viewButton').trigger('click');
+				return false;
+			} else if(code == 116){	//打印（F5）
+				$('#printButton').trigger('click');
 				return false;
 			}
 		});
