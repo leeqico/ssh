@@ -77,6 +77,7 @@ public class UserServiceImpl implements UserService{
 		int hashIterations = 1024;
 		Object source = new SimpleHash(algorithmName, password, salt, hashIterations);
 		User user = new User();
+		// TODO: 2018/10/31  需要去判断是否有用户名和密码并数据库需要做必填的属性
 		String id = UUID.randomUUID().toString().replace("-", "");
 		user.setId(id);
 		user.setName(name);
